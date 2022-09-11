@@ -229,11 +229,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mayar\\OneDrive - Etec Centro Paula Souza\\DS\\Atividades DS\\DS\\RpgApi\\RpgApi.csproj",
+      "projectUniqueName": "C:\\Users\\mayar\\OneDrive - Etec Centro Paula Souza\\DS\\Atividades DS\\2DS\\DS\\RpgApi\\RpgApi.csproj",
       "projectName": "RpgApi",
-      "projectPath": "C:\\Users\\mayar\\OneDrive - Etec Centro Paula Souza\\DS\\Atividades DS\\DS\\RpgApi\\RpgApi.csproj",
+      "projectPath": "C:\\Users\\mayar\\OneDrive - Etec Centro Paula Souza\\DS\\Atividades DS\\2DS\\DS\\RpgApi\\RpgApi.csproj",
       "packagesPath": "C:\\Users\\mayar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mayar\\OneDrive - Etec Centro Paula Souza\\DS\\Atividades DS\\DS\\RpgApi\\obj\\",
+      "outputPath": "C:\\Users\\mayar\\OneDrive - Etec Centro Paula Souza\\DS\\Atividades DS\\2DS\\DS\\RpgApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\mayar\\AppData\\Roaming\\NuGet\\NuGet.Config"
