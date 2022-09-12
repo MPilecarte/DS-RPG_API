@@ -52,8 +52,10 @@ namespace RpgApi.Controllers
         public IActionResult PostValidacao(Personagem addPersonagem)
         {
             if (addPersonagem.Inteligencia <= 10 /*|| addPersonagem.Defesa > 30*/)
-            
                 return BadRequest("Valor de defesa ou inteligência inválido! Insira um valor de Defesa maior do que 10/valor de Inteligência menor do que 30!");
+            if (addPersonagem.Defesa > 30)
+                return BadRequest("Valor de defesa ou inteligência inválido! Insira um valor de Defesa maior do que 10/valor de Inteligência menor do que 30!");
+
             else
                 personagens.Add(addPersonagem);
                 return Ok(personagens);
