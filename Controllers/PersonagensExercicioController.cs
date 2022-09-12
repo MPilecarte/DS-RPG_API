@@ -24,7 +24,7 @@ namespace RpgApi.Controllers
         };
 
 
-            [HttpGet("GetByClasse{classe}")]
+            [HttpGet("GetByClasse/{classe}")]
             public IActionResult GetByClasse(ClasseEnum classe)
             {
                 return Ok(personagens.FindAll(pe => pe.Classe == classe));
@@ -40,17 +40,33 @@ namespace RpgApi.Controllers
         [HttpGet("{nome}")]
         public IActionResult GetByNome(string nome)
         {
-            return Ok(personagens.FirstOrDefault(p => p.Nome == nome));
+            List<Personagem> listaBuscaPs = personagens.FindAll(p => p.Nome == nome);
+
+            if (listaBuscaPs.Count == 0)
+                return BadRequest("Not Found! Por favor digite um nome válido!");
+            else
+                return Ok(listaBuscaPs);
         }
 
         [HttpPost ("PostValidacao{addPersonagem}")]
         public IActionResult PostValidacao(Personagem addPersonagem)
         {
-            if (addPersonagem.Inteligencia < 10 || addPersonagem.Defesa > 30)
-            {
+            if (addPersonagem.Inteligencia <= 10 /*|| addPersonagem.Defesa > 30*/)
+            
                 return BadRequest("Valor de defesa ou inteligência inválido! Insira um valor de Defesa maior do que 10/valor de Inteligência menor do que 30!");
+            else
+                personagens.Add(addPersonagem);
+                return Ok(personagens);
+        }
+
+        [HttpPost ("PostValidacaoMago")]
+        public IActionResult PostValidacaoMago(Personagem Mago)
+        {
+            if(Mago.Inteligencia < 35)
+            {
+                BadRequest("Inteligência do Mago não pode ter o valor menor que 35" /*+ personagens.FindAll(p => p.Classe == ClasseEnum.Mago)*/);
             }
-            personagens.Add(addPersonagem);
+            personagens.Add(Mago);
             return Ok(personagens);
         }
 
@@ -61,7 +77,11 @@ namespace RpgApi.Controllers
             return Ok(pBuscaPer);
         }
 
-        // [HttpGet ("GetEstatisticas")]
+        [HttpGet ("GetEstatisticas")]
+        public IActionResult GetEstatistica(){
+            return Ok("Quantidade de personagens :" + personagens.Count + "A soma das inteligências é: " + personagens.Sum(pe => pe.Inteligencia ));
+           
+        }
     }
 }
  

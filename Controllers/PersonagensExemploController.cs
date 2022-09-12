@@ -107,7 +107,7 @@ namespace RpgApi.Controllers
         {
             if (novoPersonagem.Inteligencia == 0)
                 return BadRequest("Inteligência não pode ter o valor igual a 0 (zero).");
-
+                
             personagens.Add(novoPersonagem);
             return Ok(personagens);
         }
