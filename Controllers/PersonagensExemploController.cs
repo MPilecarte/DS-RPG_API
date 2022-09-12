@@ -24,7 +24,6 @@ namespace RpgApi.Controllers
         };
 
 
-        [HttpGet("GetAll")]
       
          //Próximo código aqui
         [HttpGet("GetAll")]

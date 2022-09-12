@@ -24,36 +24,44 @@ namespace RpgApi.Controllers
         };
 
 
-        // [HttpGet("{classe}")]
-        // public IActionResult GetByClasse(classe)
-        // {
+            [HttpGet("GetByClasse{classe}")]
+            public IActionResult GetByClasse(ClasseEnum classe)
+            {
+                return Ok(personagens.FindAll(pe => pe.Classe == classe));
+            }
 
-        //     return Ok(personagens.FirstOrDefault(ps=> ps.Classe == classe));
 
-    
-        // // public static void ObterPorTipo()
-        // //         {
-        // //             int tipo = int.Parse(Console.ReadLine());
-
-        // //             TipoFuncionarioEnum tipoConvertidoEnum = (TipoFuncionarioEnum)tipo;
-        // //             // criou uma variavel do tipo 'TipoFuncionarioEnum' com o mesmo nome do tipo, logo convertendo o 'tipo' para o 'TipoFuncionarioEnum"
-        // //             // tipo = tipo.FindAll (x => x.TipoFuncionario == 6);
-        // //         }
-
-        // }
+        [HttpGet("GetAll")]
+        public IActionResult Get()
+        {
+            return Ok(personagens);
+        }
 
         [HttpGet("{nome}")]
         public IActionResult GetByNome(string nome)
         {
-            // List<Personagem> pNome = personagens.FindAll(p => p.Nome == nome);
             return Ok(personagens.FirstOrDefault(p => p.Nome == nome));
         }
 
-        // [HttpPost ("PostValidacao")]
-        // public IActionResult PostValidacao()
-        // {
-        //     return Ok(personagens.Find(ps => ps. == ));
-        // }
-
+        [HttpPost ("PostValidacao{addPersonagem}")]
+        public IActionResult PostValidacao(Personagem addPersonagem)
+        {
+            if (addPersonagem.Inteligencia < 10 || addPersonagem.Defesa > 30)
+            {
+                return BadRequest("Valor de defesa ou inteligência inválido! Insira um valor de Defesa maior do que 10/valor de Inteligência menor do que 30!");
+            }
+            personagens.Add(addPersonagem);
+            return Ok(personagens);
         }
+
+        [HttpGet("GetClerigoMago")]
+        public IActionResult GetClerigoMago()
+        {
+            List<Personagem> pBuscaPer = personagens.FindAll(ps => ps.Classe != ClasseEnum.Cavaleiro);
+            return Ok(pBuscaPer);
+        }
+
+        // [HttpGet ("GetEstatisticas")]
     }
+}
+ 
