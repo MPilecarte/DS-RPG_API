@@ -39,7 +39,7 @@ namespace RpgApi.Controllers
         {
             try
             {
-                LinkedList<Personagem> lista = await _context.Personagens.ToListAsync();
+                List<Personagem> lista = await _context.Personagens.ToListAsync();
                 return Ok(lista);
             }
             catch (Exception ex)
